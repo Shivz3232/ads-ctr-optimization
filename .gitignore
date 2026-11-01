@@ -3,3 +3,5 @@ plugins
 state
 data/batches
 .env
+
+__pycache__
