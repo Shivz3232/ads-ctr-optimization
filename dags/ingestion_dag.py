@@ -18,7 +18,7 @@ with DAG(
   'data_ingestion',
   default_args=default_args,
   description='A Dag to batch CTR data',
-  schedule_interval='*/2 * * * *',
+  schedule_interval='* * * * *',
   catchup=False,
   max_active_runs=1
 ) as dag:
