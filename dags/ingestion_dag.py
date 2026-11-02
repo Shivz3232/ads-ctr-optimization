@@ -15,10 +15,12 @@ default_args = {
 }
 
 with DAG(
-  'Data_Ingestion',
+  'data_ingestion',
   default_args=default_args,
   description='A Dag to batch CTR data',
+  schedule_interval='*/2 * * * *',
   catchup=False,
+  max_active_runs=1
 ) as dag:
   publish_batch_task = PythonOperator(
     task_id='publish_batch_task',

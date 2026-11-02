@@ -1,4 +1,3 @@
-import numpy as np
 from math import log, sqrt
 
 def calculate_ucb(round_num, ad, state):

@@ -28,7 +28,7 @@ def load_state(**context):
   STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
 
   if STATE_PATH.exists():
-    state = json.load(STATE_PATH.read_text())
+    state = json.loads(STATE_PATH.read_text())
   else:
     conf = context["dag_run"].conf
 
@@ -65,7 +65,7 @@ def process_batch(data_b64, state, **context):
     if (selected_ad == -1):
         raise "No ad was selected!"
 
-    reward = batch.iloc[n, selected_ad] # 0 or 1
+    reward = int(batch.iloc[n, selected_ad]) # 0 or 1
 
     state["sum_of_rewards"][selected_ad] += reward
     state["selection_counts"][selected_ad] += 1

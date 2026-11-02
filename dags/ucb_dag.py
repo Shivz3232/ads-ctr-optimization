@@ -17,6 +17,8 @@ with DAG(
   default_args=default_args,
   description='A Dag to evaluate the Upper Confidence Bound for a batch of Ads CTR data',
   catchup=False,
+  schedule_interval=None,
+  max_active_runs=1
 ) as dag:
   load_batch_task = PythonOperator(
     task_id='load_batch_task',
@@ -36,7 +38,8 @@ with DAG(
 
   save_state_task = PythonOperator(
     task_id='save_state_task',
-    python_callable=save_state
+    python_callable=save_state,
+    op_args=[process_batch_task.output]
   )
 
   [load_batch_task, load_state_task] >> process_batch_task >> save_state_task

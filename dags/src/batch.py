@@ -21,7 +21,7 @@ def publish_batch():
 
     if start >= len(df):
       print("All batches have been published")
-      return
+      return None
 
     batch = df.iloc[start:end]
 

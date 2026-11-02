@@ -3,7 +3,7 @@ set -e
 
 # Remove existing .env file if it exists
 rm -f .env
-rm -rf ./logs ./plugins ./config
+rm -rf ./logs ./state
 
 # Create required Airflow directories
 mkdir -p ./logs ./state
